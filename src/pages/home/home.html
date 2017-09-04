@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Pomodoro Clock
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-row>
+      <ion-row>
+        <span>{{minutes}} : {{seconds}}</span>
+      </ion-row>
+      <ion-row>
+        <button (tap)="startOrPause()">
+          <ion-icon name="play" *ngIf="isPaused"></ion-icon>
+          <ion-icon name="pause" *ngIf="!isPaused"></ion-icon>
+          <ion-icon name="stop" *ngIf="isPaused && wasPlayed"></ion-icon>
+        </button>
+      </ion-row>
+    </ion-row>
+  </ion-row>
+</ion-content>
