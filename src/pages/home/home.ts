@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  private  isFocusingMode: boolean = true;
+  private isFocusingMode: boolean = true;
   private isPaused: boolean = true;
   private wasPlayed: boolean = false;
   private minutes: any  = '25';
@@ -21,15 +21,28 @@ export class HomePage {
   }
 
   startOrPause()  {
-    this.setTicks();
-    this.startCounter();
+    if(!this.wasPlayed) {
+      this.setTicks();
+    }
+    if(this.isPaused) {
+      this.startCounter();
+      this.isPaused = false;
+      this.wasPlayed = true;
+    } else {
+      this.pauseCounter();
+      this.isPaused = true;
+    }
   }
 
   setTicks() {
     this.ticks = this.minutes * 60 + this.seconds * 1;
+    this.cdr.detectChanges();
   }
 
   startCounter() {
+    if(!this.wasPlayed) {
+      this.ticks--;
+    }
     this.interval = setInterval(t => {
       if (this.ticks > 0) {
         this.seconds = this.ticks--;
@@ -42,5 +55,26 @@ export class HomePage {
         clearInterval(this.interval);
       }
     }, 1000);
+  }
+
+  pauseCounter(){
+    clearInterval(this.interval);
+  }
+
+  refreshTimer(){
+    this.wasPlayed = false;
+    if(this.isFocusingMode) {
+      this.minutes = '25'; // userparams for focus mode
+    }
+    if(!this.isFocusingMode) {
+      this.minutes = '05'; // userparams for relax mode
+    }
+    this.seconds = '00';
+    this.setTicks();
+  }
+
+  changeMode(){
+    this.isFocusingMode?  this.isFocusingMode = false : this.isFocusingMode = true ;
+    this.refreshTimer();
   }
 }

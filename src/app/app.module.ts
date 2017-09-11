@@ -5,11 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
+import { BackgroundImagesComponent } from './../components/background-images/background-images'
 import { HomePage } from '../pages/home/home';
 
 @NgModule({
   declarations: [
     MyApp,
+    BackgroundImagesComponent,
     HomePage
   ],
   imports: [

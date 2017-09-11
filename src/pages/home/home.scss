@@ -1,3 +1,54 @@
 page-home {
 
+  ion-content{
+    background: #274a82 !important;
+    ion-row{
+      width: 100%;
+    }
+    .timer-wrapper{
+      .settings-wrapper{
+        margin-bottom: -20%;
+        button{
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+          color: whitesmoke;
+        }
+      }
+      .counter{
+        height: 160px;
+        margin: 62% 0 3%;
+        font-size: 70px;
+        color: whitesmoke;
+        .backround-hover{
+          width: 75%;
+          height: 45%;
+          background-color: rgba(0, 0, 0, 0.3);
+          border-radius: 10px;
+        }
+      }
+      .buttons-wrapper{
+        button{
+          background-color: transparent;
+          width: 60px;
+          height: 60px;
+          font-size: 50px;
+          margin: 5% 7% 0;
+          color: whitesmoke;
+        }
+      }
+      .mode-swithcher-wrapper{
+        button{
+          margin-top: 7%;
+          background-color: transparent;
+          height: 60px;
+          font-size: 30px;
+          color: whitesmoke;
+        }
+      }
+
+    }
+  }
+
 }

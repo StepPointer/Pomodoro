@@ -1,24 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Pomodoro Clock
-    </ion-title>
-  </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-row>
-    <ion-row>
-      <ion-row>
-        <span>{{minutes}} : {{seconds}}</span>
+<ion-content>
+  <background-images></background-images>
+  <ion-row class="timer-wrapper">
+    <ion-row justify-content-end class="settings-wrapper">
+      <button>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-row>
+    <ion-row class="counter" justify-content-center align-items-center>
+      <ion-row class="backround-hover" justify-content-center align-items-center>
+        <span> {{minutes}} : {{seconds}} </span>
       </ion-row>
-      <ion-row>
-        <button (tap)="startOrPause()">
-          <ion-icon name="play" *ngIf="isPaused"></ion-icon>
-          <ion-icon name="pause" *ngIf="!isPaused"></ion-icon>
-          <ion-icon name="stop" *ngIf="isPaused && wasPlayed"></ion-icon>
-        </button>
-      </ion-row>
+    </ion-row>
+    <ion-row class="buttons-wrapper" justify-content-center align-items-center>
+      <button (tap)="startOrPause()" *ngIf="isPaused">
+        <ion-icon name="play"></ion-icon>
+      </button>
+      <button (tap)="startOrPause()" *ngIf="!isPaused">
+        <ion-icon name="pause"></ion-icon>
+      </button>
+      <button (tap)="refreshTimer()" *ngIf="isPaused && wasPlayed">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-row>
+    <ion-row class="mode-swithcher-wrapper" justify-content-center align-items-center>
+      <button (tap)="changeMode()" *ngIf="isPaused && wasPlayed">
+        <span *ngIf="isFocusingMode"> Start relaxing </span>
+        <span *ngIf="!isFocusingMode"> Start focusing </span>
+      </button>
     </ion-row>
   </ion-row>
 </ion-content>
